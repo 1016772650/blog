@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    width: 100%;
+}
+
+.menuContainer {
+    width: 15%;
+    height: 100%;
+    background-color: #404040;
+}
+
+.contentContainer {
+    width: 85%;
+    overflow-y: scroll;
+    padding: 20px;
+}
