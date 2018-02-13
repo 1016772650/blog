@@ -3,6 +3,7 @@
  */
 import {combineReducers} from 'redux';
 import admin from './admin'
+import {reducer as front} from './frontReducer';
 
 const initialState = {
     isFetching: true,
@@ -85,6 +86,7 @@ export function reducer(state = initialState, action) {
 
 export default combineReducers({
     globalState: reducer,
-    admin
+    admin,
+    front
 })
 

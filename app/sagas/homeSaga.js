@@ -19,7 +19,7 @@ export function* login(username, password) {
 export function* register(data) {
     yield put({type:IndexActionTypes.FETCH_START});
     try {
-        return yield call(posr, '/user/register', data);
+        return yield call(post, '/user/register', data);
     } catch (error) {
         yield put({type: IndexActionTypes.SET_MESSAGE, msgContent: '注册失败', msgType: 0});
     } finally {

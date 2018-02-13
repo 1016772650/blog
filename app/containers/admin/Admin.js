@@ -15,6 +15,7 @@ import {actions} from '../../reducers/admin';
 import AdminMenu from "../../components/adminMenu/AdminMenu";
 import NotFound from "../../components/notFound/NotFound";
 import AdminIndex from "../adminindex/AdminIndex";
+import AdminManageUser from "../adminManagerUser/AdminManageUser"
 
 const {change_location_admin} = actions;
 
@@ -43,7 +44,7 @@ class Admin extends Component {
                                 <div className={style.contentContainer} >
                                     <Switch>
                                         <Route exact path={url} component={AdminIndex} />
-                                        <Route exact path={`${url}/managerUser`} component={AdminIndex} />
+                                        <Route exact path={`${url}/managerUser`} component={AdminManageUser} />
                                         <Route component={NotFound} />
                                     </Switch>
                                 </div>

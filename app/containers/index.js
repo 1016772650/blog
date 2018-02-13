@@ -16,7 +16,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {actions} from '../reducers';
 import Admin from './admin/Admin';
-import NotFound from "../components/notFound/NotFound"
+import NotFound from "../components/notFound/NotFound";
+import Front from './front/Front'
 
 
 const {clear_msg, user_auth} = actions;
@@ -24,6 +25,7 @@ const {clear_msg, user_auth} = actions;
 class AppIndex extends Component {
     constructor(props) {
         super(props);
+        {console.log('container,index.js,this.props:', this.props)}
         this.openNotification = this.openNotification.bind(this);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
@@ -45,9 +47,8 @@ class AppIndex extends Component {
             <Router>
                 <div>
                     <Switch>
-
                         <Route path='/admin' component={Admin}/>
-                        <Route path="/" />
+                        <Route exact path="/" component={Front} />
                         <Route component={NotFound} />
                     </Switch>
 

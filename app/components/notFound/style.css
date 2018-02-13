@@ -1,10 +1,10 @@
 .container {
-    background-color: #ddd;
+    /*background-color: #ddd;*/
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    width: 100%;
+    width: 80%;
     top:0;
     height: 100%;
     left: 15%;

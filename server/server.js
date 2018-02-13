@@ -18,6 +18,12 @@ const proxy = httpProxy.createProxyServer({
 
 app.use('/api', (req,res) => {
     proxy.web(req, res, {target: targetUrl});
+    proxy.on('error', function (err, req, res) {
+        // res.writeHead(500, {
+        //     'Content-type': 'text/plain'
+        // });
+        res.end('Something went wrong.')
+    });
 });
 
 app.use('/', connectHistoryApiFallback());
@@ -57,3 +63,5 @@ app.listen(port, (err) => {
         console.log(`===>open http://${config.host}:${config.port} in a browser to view the app`);
     }
 });
+
+

@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 20px;
+    background-color: #ffffff;
+}
+
+.container>img {
+    width: 27%;
+    margin-top: 20px;
+}
+
+.container>p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.centerP {
+    margin: 25px auto;
+}
+
+.exit {
+    color: #adadb5;
+    font-weight: bold;
+}
+
+.container>button {
+    margin-bottom: 20px;
+    width: 80%;
+}
