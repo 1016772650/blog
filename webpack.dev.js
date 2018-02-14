@@ -26,7 +26,7 @@ module.exports = {
     output: {
         path: OUTPUT_PATH,
         publicPath: '/',
-        filename: '[name]-[hash8.js].js'
+        filename: '[name]-[hash:8].js'
     },
     devtool: 'cheap-module-eval-source-map',
     module:{
@@ -108,9 +108,9 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest'
         }),
-        new OpenBrowserPlugin({
-            url: `http://${config.host}:${config.port}`
-        })
+        // new OpenBrowserPlugin({
+        //     url: `http://${config.host}:${config.port}`
+        // })
     ],
     resolve: {
         extensions: ['.js', '.json', '.scss', '.sass', '.less', 'jsx']

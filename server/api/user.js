@@ -31,7 +31,7 @@ router.post('/login', (req, res) => {
             data.userType = userInfo.type;
             data.userId = userInfo._id;
             // 登录成功后设置session
-            req.session.uerInfo = data;
+            req.session.userInfo = data;
             // console.log("api,user.js,session:", req.session);
             responseClient(res, 200, 0, '登录成功', data);
             return;
@@ -44,6 +44,16 @@ router.post('/login', (req, res) => {
     })
 });
 
+/**
+ * 客户端用户验证
+ * */
+router.get('/userInfo', function (req, res) {
+    if (req.session.userInfo) {
+        responseClient(res, 200, 0, "", req.session.userInfo);
+    } else {
+        responseClient(res, 200, 1, '请重新登录', req.session.userInfo);
+    }
+});
 
 router.get('/logout', function (req, res) {
     req.session.destroy();

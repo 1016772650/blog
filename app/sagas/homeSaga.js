@@ -49,3 +49,23 @@ export function* registerFlow() {
         }
     }
 }
+
+export function* user_auth() {
+    while(true) {
+        yield take(IndexActionTypes.USER_AUTH);
+        try {
+            yield put({type:IndexActionTypes.FETCH_START});
+            let response = yield call(get, '/user/userInfo');
+            if (response && response.code === 0) {
+                yield put({type:IndexActionTypes.RESPONSE_USER_INFO, data:response.data});
+            }
+            console.log('homeSage,user_auth,response: ', response);
+        } catch (err) {
+            console.log(err);
+
+        } finally {
+            yield put({type: IndexActionTypes.FETCH_END});
+        }
+    }
+}
+

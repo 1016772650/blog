@@ -44,7 +44,7 @@ if (process.env.NODE_EVN !== 'production') {
 
     app.use(WebpackDevMiddleware(compiler, {
         publicPath: '/',
-        stats: {color: true},
+        status: {color: true},
         lazy: false,
         watchOptions: {
             aggregateTimeout: 300,

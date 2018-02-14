@@ -25,7 +25,7 @@ const {clear_msg, user_auth} = actions;
 class AppIndex extends Component {
     constructor(props) {
         super(props);
-        {console.log('container,index.js,this.props:', this.props)}
+        // {console.log('container,index.js,this.props:', this.props)}
         this.openNotification = this.openNotification.bind(this);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
@@ -66,12 +66,14 @@ class AppIndex extends Component {
     }
 
     componentDidMount() {
-        // this.props.user_auth();
+        console.log("container,index,didMount,props: ", this.props);
+        this.props.user_auth();
     }
 }
 
 
 function mapStateToProps(state) {
+    // console.log("container,index,globalState:",state.globalState);
     return {
         notification: state.globalState.msg,
         isFetching: state.globalState.isFetching,
