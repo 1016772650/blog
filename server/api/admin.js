@@ -5,17 +5,21 @@ import Express from 'express';
 import User from '../../models/user';
 import {responseClient} from '../util';
 
+
 const router = Express.Router();
 
 // admin请求后台验证
 router.use( (req, res, next) => {
-    console.log("api/admin.js,req.session:", req.session)
+    // console.log("api/admin.js,req.session:", req.session);
     if (req.session.userInfo) {
         next();
     } else {
         return res.send(responseClient(res, 200, 1, '身份信息已过期，请重新登录'));
     }
 } );
+
+router.use('/tags', require('./tags'));
+router.use('/article', require('./article'));
 
 router.get('/getUsers', (req, res) => {
     let skip = (req.query.pageNum-1)<0 ? 0: (req.query.pageNum-1) * 10;
@@ -40,7 +44,5 @@ router.get('/getUsers', (req, res) => {
         }
     );
 });
-
-
 
 module.exports = router;

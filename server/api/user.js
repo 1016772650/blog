@@ -21,7 +21,7 @@ router.post('/login', (req, res) => {
     }
     User.findOne({
         username,
-        // password: md5(password + MD5_SUFFIX)
+        password: md5(password + MD5_SUFFIX)
     }).then(userInfo => {
         // console.log("api,user.js,userInfo:", userInfo);
         if (userInfo) {
@@ -45,13 +45,64 @@ router.post('/login', (req, res) => {
 });
 
 /**
+ * 注册
+ * */
+router.post('/register', (req, res) => {
+    let {userName, password, passwordRe} = req.body;
+    if (!userName) {
+        responseClient(res, 400, 2, '用户名不可为空');
+        return;
+    }
+    if (!password) {
+        responseClient(res, 400, 2, '密码不可为空');
+        return;
+    }
+    if (password !== passwordRe) {
+        responseClient(res, 400, 2, '两次密码不一致');
+        return;
+    }
+
+    // 验证用户是否已经在数据库中
+    User.findOne({username: userName})
+        .then(data => {
+            if (data) {
+                responseClient(res, 200, 1, '用户名已存在');
+                return;
+            }
+            // 保存到数据库
+            let user = new User({
+                username: userName,
+                password: md5(password + MD5_SUFFIX),
+                type: "user"
+            });
+            user.save()
+                .then(function () {
+                    User.findOne({username: userName})
+                        .then(userInfo => {
+                            let data= {};
+                            data.username = userInfo.username;
+                            data.userType = userInfo.type;
+                            data.userId = userInfo._id;
+                            responseClient(res, 200, 0, '注册成功', data);
+                            return;
+                        });
+                });
+        })
+        .catch(err=> {
+            responseClient(res);
+            console.log(err);
+            return;
+        });
+});
+
+/**
  * 客户端用户验证
  * */
 router.get('/userInfo', function (req, res) {
     if (req.session.userInfo) {
         responseClient(res, 200, 0, "", req.session.userInfo);
     } else {
-        responseClient(res, 200, 1, '请重新登录', req.session.userInfo);
+        responseClient(res, 200, 1, '身份信息已过期，请重新登录', req.session.userInfo);
     }
 });
 

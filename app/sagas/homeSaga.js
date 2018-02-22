@@ -59,7 +59,7 @@ export function* user_auth() {
             if (response && response.code === 0) {
                 yield put({type:IndexActionTypes.RESPONSE_USER_INFO, data:response.data});
             }
-            console.log('homeSage,user_auth,response: ', response);
+            // console.log('homeSage,user_auth,response: ', response);
         } catch (err) {
             console.log(err);
 

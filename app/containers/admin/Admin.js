@@ -15,7 +15,9 @@ import {actions} from '../../reducers/admin';
 import AdminMenu from "../../components/adminMenu/AdminMenu";
 import NotFound from "../../components/notFound/NotFound";
 import AdminIndex from "../adminindex/AdminIndex";
-import AdminManageUser from "../adminManagerUser/AdminManageUser"
+import AdminManageUser from "../adminManagerUser/AdminManageUser";
+import AdminManageTags from "../adminManagerTags/AdminManagerTags";
+import AdminNewArticle from "../adminNewArticle/AdminNewArticle"
 
 const {change_location_admin} = actions;
 
@@ -28,7 +30,7 @@ class Admin extends Component {
     render() {
         const {url} = this.props.match;
         if (this.props.userInfo&&this.props.userInfo.userType) {
-            console.log("Admin.js, userInfo:", this.props.userInfo);
+            // console.log("Admin.js, userInfo:", this.props.userInfo);
             return (
                 <div>
                     {
@@ -45,6 +47,8 @@ class Admin extends Component {
                                     <Switch>
                                         <Route exact path={url} component={AdminIndex} />
                                         <Route exact path={`${url}/managerUser`} component={AdminManageUser} />
+                                        <Route path={`${url}/managerTags`} component={AdminManageTags} />
+                                        <Route path={`${url}/newArticle`} component={AdminNewArticle} />
                                         <Route component={NotFound} />
                                     </Switch>
                                 </div>
@@ -54,7 +58,7 @@ class Admin extends Component {
                 </div>
             );
         } else {
-            console.log("Admin.js,notFound userInfo:", this.props.userInfo);
+            // console.log("Admin.js,notFound userInfo:", this.props.userInfo);
             return <NotFound />
         }
     }

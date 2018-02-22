@@ -35,6 +35,9 @@ export function* get_all_users_flow() {
         } else {
             // console.log('F:\\Practice\\blog\\app\\sagas\\adminManagerUsersSaga.js, response: ', response);
             yield put({type:IndexActionTypes.SET_MESSAGE, msgContent:response ? response.message : "", msgType:0});
+            setTimeout(function () {
+                location.replace('/')
+            }, 1000);
         }
     }
 

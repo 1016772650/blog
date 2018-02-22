@@ -56,7 +56,7 @@ export const actions = {
 
 
 export function reducer(state = initialState, action) {
-    console.log("reducers,index,state: ", state);
+    // console.log("reducers,index,state: ", state);
     switch (action.type) {
         case actionsTypes.FETCH_START:
             return {
