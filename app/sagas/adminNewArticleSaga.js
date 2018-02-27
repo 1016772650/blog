@@ -30,7 +30,7 @@ export function* saveArticleFlow() {
             yield put({type: IndexActionTypes.SET_MESSAGE, msgContent: '请输入文章标题', msgType: 0});
         } else if(request.data.content === '') {
             yield put({type: IndexActionTypes.SET_MESSAGE, msgContent: '请输入文章内容', msgType: 0});
-        } else if (request.data.tags.lwngth === 0) {
+        } else if (request.data.tags.length === 0) {
             yield put({type: IndexActionTypes.SET_MESSAGE, msgContent: '请选择文章分类', nsgType: 0});
         }
         if (request.data.title && request.data.content && request.data.tags.length > 0) {

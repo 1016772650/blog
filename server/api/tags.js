@@ -7,18 +7,6 @@ import {responseClient} from '../util';
 
 const router = Express.Router();
 
-// 获取全部标签
-router.get('/getAllTags', function (req, res) {
-    Tags.find(null, 'name')
-        .then(data => {
-            responseClient(res, 200, 0, '请求成功', data);
-        })
-        .catch(err => {
-            responseClient(res);
-            console.log(err);
-        })
-});
-
 // 添加标签
 router.post('/addTag', function (req, res) {
     let {name} = req.body;

@@ -55,7 +55,7 @@ class AdminNewArticle extends Component {
         articleData.title = this.props.title;
         articleData.content = this.props.content;
         articleData.tags = this.props.tags;
-        articleData.time = dateFormat(new Date(), 'yyy-mm-dd HH:MM:ss');
+        articleData.time = dateFormat(new Date(), 'yyyy-mm-dd HH:MM:ss');
         articleData.isPublish = true;
         this.props.save_article(articleData);
     }

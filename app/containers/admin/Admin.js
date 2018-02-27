@@ -18,6 +18,7 @@ import AdminIndex from "../adminindex/AdminIndex";
 import AdminManageUser from "../adminManagerUser/AdminManageUser";
 import AdminManageTags from "../adminManagerTags/AdminManagerTags";
 import AdminNewArticle from "../adminNewArticle/AdminNewArticle"
+import AdminManagerArticle from '../adminManagerArticle/AdminManagerArticle';
 
 const {change_location_admin} = actions;
 
@@ -49,6 +50,7 @@ class Admin extends Component {
                                         <Route exact path={`${url}/managerUser`} component={AdminManageUser} />
                                         <Route path={`${url}/managerTags`} component={AdminManageTags} />
                                         <Route path={`${url}/newArticle`} component={AdminNewArticle} />
+                                        <Route path={`${url}/managerArticle`} component={AdminManagerArticle} />
                                         <Route component={NotFound} />
                                     </Switch>
                                 </div>

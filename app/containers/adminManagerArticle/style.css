@@ -1,0 +1,52 @@
+.articleListContainer {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    height: 500px;
+}
+
+.paginationStyle {
+    text-align: center;
+}
+
+.cellContainer {
+    margin-top: 10px;
+    border-bottom: solid thin #ddd;
+    display: flex;
+    flex-direction: row;
+}
+
+.articleTitle {
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: #000;
+}
+
+.cellState {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.cellAboutArticle{
+    display: flex;
+    flex: 4;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.cellAboutArticle span {
+    margin-right: 15px;
+    font-size: 10px;
+    display: inline-block;
+    color: #6b6b6b;
+}
+
+.cellOperation {
+    display: flex;
+    flex: 2;
+    align-items: center;
+    justify-content: space-around;
+}

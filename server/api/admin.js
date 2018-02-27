@@ -14,7 +14,7 @@ router.use( (req, res, next) => {
     if (req.session.userInfo) {
         next();
     } else {
-        return res.send(responseClient(res, 200, 1, '身份信息已过期，请重新登录'));
+        return responseClient(res, 200, 1, '身份信息已过期，请重新登录');
     }
 } );
 
@@ -39,6 +39,7 @@ router.get('/getUsers', (req, res) => {
             ).catch(
                 err => {
                     responseClient(res, message="获取失败，稍后重试");
+                    console.error(err);
                 }
             );
         }
